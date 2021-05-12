@@ -56,14 +56,25 @@ const reject = function (collection, callbackTest) {
   });
 };
 
+// const uniq = function (array) {
+//   let brandNewArray = [];
+//   each(array, function (num) {
+//     if (!brandNewArray.includes(num)) {
+//       brandNewArray.push(num);
+//     }
+//   });
+//   return brandNewArray;
+// };
+
 const uniq = function (array) {
-  let brandNewArray = [];
-  each(array, function (num) {
-    if (!brandNewArray.includes(num)) {
-      brandNewArray.push(num);
+  let result = [];
+
+  each(array, function (element) {
+    if (indexOf(result, element) === -1) {
+      result.push(element);
     }
   });
-  return brandNewArray;
+  return result;
 };
 
 const reduce = function (collection, iterator, accumulator) {
@@ -80,6 +91,19 @@ const reduce = function (collection, iterator, accumulator) {
   });
   return startingNumber;
 };
+
+// const reduce = function (collection, iterator, accumulator) {
+//   let initializing = arguments.length === 2;
+//   each(collection, function (value) {
+//     if (initializing) {
+//       accumulator = value;
+//       initializing = false;
+//     } else {
+//       accumulator = iterator(accumulator, value);
+//     }
+//   });
+//   return accumulator;
+// };
 
 module.exports = {
   filter,
